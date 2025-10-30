@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kartu Fakta Menarik — Teknologi</title>
+  <style>
+  </style>
+</head>
+<body>
+
+
+  <div class="card-fakta">
+    <img id="factImage" src="orion.webp" alt="Ilustrasi Proyek Orion" />
+    <div class="content">
+      <h2>Fakta Menarik tentang luar angkasa!</h2>
+      <p class="subtitle">Tahukah kamu fakta-fakta unik ini?</p>
+
+
+      <ul class="facts-list" id="factList">
+        <li>Pesawat ulang-alik ini menggunakan ledakan dari bom nuklir, lalu mengendarai gelombang kejutnya sebagai propulsi di luar angakasa.</li>
+        <li>Diperkirakan, Orion bisa mencapai Jupiter dibawah 1 tahun.</li>
+        <li>Bom nuklir yang dibawa Orion memilik kekuatan 0,15 kiloton.</li>
+        <li>Nama lain Orion adalah "Pulsa Nuklir".</li>
+      </ul>
+
+
+      <button class="btn-next" id="nextFact">🔁 Fakta Selanjutnya</button>
+
+
+      <div class="card-footer">© 2025 | Fakta Teknologi • Informatika SMA</div>
+    </div>
+  </div>
+
+
+  <script>
+    const factData = [
+      {
+        image: "alcu.jpg",
+        facts: [
+          "Teknologi spekulatif ini bisa membengkokan cahaya dan mengacakan realitas disekitarnya.",
+          "Alcubierre, secara teoritis, bisa dipakai untuk transportasi di luar angkasa.",
+          "Teknologi ini banyak dikenakkan di film Star Trek."
+         
+        ]
+      },
+      {
+        image: "kepler.jpg",
+        facts: [
+          "Kepler 22 adalah bintang yang mirip dengan kita dan memiliki planet mirip dengan bumi yang dinamainya Kepler 22b",
+          "Kepler 22b merupakan 'super-bumi' dan memiliki massa 2,4 kali dari Bumi.",
+          "Diperkirakan mahkluk cerdas seperti manusia tinggal di Kepler 22."
+        ]
+      },
+      {
+        image: "europa.jpg",
+        facts: [
+          "Europa adalah salah satu bulan dari Jupiter.",
+          "Diperkirakan dibawah lapisan es Europa, terdapat laut sedalam 500m",
+          "Juga diperkirakan ada binatang-binatang asing didalam es."
+        ]
+      },
+      {
+        image: "oumua.jpeg",
+        facts: [
+          "Oumuamua merupakan comet berbentuk rokok yang datang dari luar tata surya.",
+          "Oumuamua adalah bahasa Hawaii yang berarti pemberi pesan.",
+          "Dikira pesawat ulang-alik alien yang dikirim untuk mengawasi Bumi."
+        ]
+      }
+    ];
+
+
+    const factList = document.getElementById("factList");
+    const factImage = document.getElementById("factImage");
+    const nextBtn = document.getElementById("nextFact");
+
+
+    nextBtn.addEventListener("click", () => {
+      factList.classList.add("fade-out");
+      setTimeout(() => {
+        const randomFact = factData[Math.floor(Math.random() * factData.length)];
+        factImage.style.opacity = 0;
+
+
+        setTimeout(() => {
+          factImage.src = randomFact.image;
+          factImage.style.opacity = 1;
+        }, 400);
+
+
+        factList.innerHTML = randomFact.facts.map(f => `<li>${f}</li>`).join("");
+        factList.classList.remove("fade-out");
+      }, 500);
+    });
+  </script>
+
+
+</body>
+</html>
